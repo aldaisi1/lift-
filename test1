@@ -1,0 +1,51 @@
+int dig1=8;
+
+int dig2=9;
+
+int dig3=2;
+
+// defining the three input pins as integer digits dig1, dig2 and dig3
+ 
+
+int MSD=0;
+
+int Middle=0;
+
+int LSD=0;
+
+// defining the variables into which the data from the pins is read into. 
+ 
+
+void setup() {
+
+// put your setup code here, to run once:
+
+pinMode(dig1,INPUT);
+
+pinMode(dig2,INPUT);
+
+pinMode(dig3,INPUT);
+
+Serial.begin(9600); }
+
+ 
+
+void loop() {
+
+// put your main code here, to run repeatedly:
+
+LSD=digitalRead(dig1); 
+
+Middle=digitalRead(dig2); 
+
+MSD=digitalRead(dig3); \
+
+int flooreg=(LSD)+(Middle<<1)+(MSD<<2);
+
+// This turns our binary number into a decimal. Starting from the least significant figure (LSD) we then add the other two digits but must shift them one (<<1) or two (<<2) place(s)  to the left so that 1+1+1 is not 3 but 111 which is actually 7.
+
+Serial.println(flooreg); 
+
+delay(1000);
+
+}
